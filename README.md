@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
 
 	wchar_t languageNumber; // Создать переменную для номера языка
 	wxPrintf(wxT("Enter language number: ")); // Вывести сообщение
-	std::wcin >> languageNumber; // Считать номер языка
-	std::wcin.ignore(); // Пропустить символ перевода строки
+	std::wcin.get(languageNumber); // Считать номер языка
+	std::wcin.ignore(65535 * sizeof(wchar_t), '\n'); // Очистить буфер ввода
 
 	if (languageNumber == '1') { // Если выбран английский язык
 		m_locale.Init(wxLANGUAGE_ENGLISH); // Инициализировать локализацию
