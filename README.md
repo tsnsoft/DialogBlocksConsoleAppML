@@ -20,16 +20,19 @@ int main(int argc, char** argv) {
 	}
 	wxLocale m_locale; // Создать объект локализации приложения для подсистемы wxWidgets
 	setlocale(LC_ALL, "ru_RU.UTF-8"); // Установить локаль по умолчанию для Linux
+	m_locale.AddCatalogLookupPathPrefix(wxT("locale")); // Добавить путь к каталогу локализации
 
 	// Список языков
 	std::vector<std::string> languages = { "English", "German", "Kazakh", "Russian" };
 
+	// Вывод списка языков
 	wxPuts(wxT("Choose language:")); // Вывести сообщение
 	for (int i = 0; i < languages.size(); ++i) { // Перебрать все языки
 		// Вывести номер языка и название языка
 		wxPuts(std::to_wstring(i + 1) + L". " + wxString::FromUTF8(languages[i].c_str()));
 	}
 
+	// Выбор языка
 	wchar_t languageNumber; // Создать переменную для номера языка
 	wxPrintf(wxT("Enter language number: ")); // Вывести сообщение
 	std::wcin.get(languageNumber); // Считать номер языка
@@ -38,12 +41,15 @@ int main(int argc, char** argv) {
 
 	if (languageNumber == '1') { // Если выбран английский язык
 		m_locale.Init(wxLANGUAGE_ENGLISH); // Инициализировать локализацию
+		m_locale.AddCatalog(wxT("en")); // Добавить каталог локализации английского языка
 	}
 	else if (languageNumber == '2') { // Если выбран немецкий язык
 		m_locale.Init(wxLANGUAGE_GERMAN); // Инициализировать локализацию
+		m_locale.AddCatalog(wxT("de")); // Добавить каталог локализации немецкого языка
 	}
 	else if (languageNumber == '3') { // Если выбран казахский язык
 		m_locale.Init(wxLANGUAGE_KAZAKH); // Инициализировать локализацию
+		m_locale.AddCatalog(wxT("kk")); // Добавить каталог локализации казахского языка
 	}
 	else if (languageNumber == '4') { // Если выбран русский язык
 		m_locale.Init(wxLANGUAGE_RUSSIAN); // Инициализировать локализацию
@@ -52,11 +58,6 @@ int main(int argc, char** argv) {
 		m_locale.Init(wxLANGUAGE_RUSSIAN); // Инициализировать локализацию
 		wxPuts(wxT("Wrong number!")); // Вывести сообщение
 	}
-
-	m_locale.AddCatalogLookupPathPrefix(wxT("locale")); // Добавить путь к каталогу локализации
-	m_locale.AddCatalog(wxT("en")); // Добавить каталог локализации английского языка
-	m_locale.AddCatalog(wxT("kk")); // Добавить каталог локализации казахского языка
-	m_locale.AddCatalog(wxT("de")); // Добавить каталог локализации немецкого языка
 
 #ifdef __WXMSW__ // Определение для Windows
 	_setmode(_fileno(stdout), _O_U16TEXT); // Установить Юникод для вывода в консоли Windows
