@@ -5,6 +5,7 @@
 
 ```
 #include <wx/wx.h>
+#include <limits> 
 
 #ifdef _WIN32 // Если это Windows
 #include <io.h>
@@ -36,7 +37,7 @@ int main(int argc, char** argv) {
 	wchar_t languageNumber; // Создать переменную для номера языка
 	wxPrintf(wxT("Enter language number: ")); // Вывести сообщение
 	std::wcin.get(languageNumber); // Считать номер языка
-	std::wcin.ignore(65535 * sizeof(wchar_t), '\n'); // Очистить буфер ввода
+	std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очистить буфер ввода
 	std::wcin.clear(); // Очистить флаги ошибок ввода
 
 	if (languageNumber == '1') { // Если выбран английский язык
@@ -68,7 +69,7 @@ int main(int argc, char** argv) {
 	wxPuts(wxGetTranslation(L"Замечательно! Das ist großartig! Wonderful! 精彩的！ رائع!"));
 	wxPrintf(wxGetTranslation(L"Введите имя: "));
 	std::wstring fio; // Создать строковую переменную
-	std::wcin >> fio; // Считать строку
+	std::getline(std::wcin, fio); // Считать строку
 	wxPuts(wxGetTranslation(L"Привет") + ", " + fio + "!"); // Вывести строку
 
 #ifdef __WXMSW__ // Определение для Windows
