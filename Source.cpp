@@ -1,5 +1,4 @@
 ﻿#include <wx/wx.h>
-#include <limits> 
 
 #ifdef _WIN32 // Если это Windows
 #include <io.h>
@@ -54,7 +53,7 @@ int main(int argc, char** argv) {
 		wxPuts(wxT("Wrong number!")); // Вывести сообщение
 	}
 
-#ifdef __WXMSW__ // Определение для Windows
+#ifdef _WIN32 // Если это Windows
 	_setmode(_fileno(stdout), _O_U16TEXT); // Установить Юникод для вывода в консоли Windows
 	_setmode(_fileno(stdin), _O_U16TEXT); // Установить Юникод для ввода в консоли Windows
 	_setmode(_fileno(stderr), _O_U16TEXT); // Установить Юникод для вывода ошибок в консоли Windows
