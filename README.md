@@ -7,11 +7,6 @@
 #include <wx/wx.h>
 #include <limits> 
 
-#ifdef _WIN32 // Если это Windows
-#include <io.h>
-#include <fcntl.h>
-#endif 
-
 int main(int argc, char** argv) {
 	wxApp myApp; // Создать объект wxApp-приложения
 	wxInitializer initializer(argc, argv); // Инициализировать приложение
