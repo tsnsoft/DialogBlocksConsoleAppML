@@ -5,7 +5,6 @@
 
 ```
 #include <wx/wx.h>
-#include <limits> 
 
 int main(int argc, char** argv) {
 	wxApp myApp; // Создать объект wxApp-приложения
@@ -23,7 +22,7 @@ int main(int argc, char** argv) {
 
 	// Вывод списка языков
 	wxPuts(wxT("Choose language:")); // Вывести сообщение
-	for (int i = 0; i < languages.size(); ++i) { // Перебрать все языки
+	for (std::size_t i = 0; i < languages.size(); ++i) { // Перебрать все языки
 		// Вывести номер языка и название языка
 		wxPuts(std::to_wstring(i + 1) + L". " + wxString::FromUTF8(languages[i].c_str()));
 	}
@@ -32,8 +31,10 @@ int main(int argc, char** argv) {
 	wchar_t languageNumber; // Создать переменную для номера языка
 	wxPrintf(wxT("Enter language number: ")); // Вывести сообщение
 	std::wcin.get(languageNumber); // Считать номер языка
+
 	std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очистить буфер ввода
 	std::wcin.clear(); // Очистить флаги ошибок ввода
+	std::wcin.sync();  // Синхронизировать поток
 
 	if (languageNumber == '1') { // Если выбран английский язык
 		m_locale.Init(wxLANGUAGE_ENGLISH); // Инициализировать локализацию
@@ -55,7 +56,7 @@ int main(int argc, char** argv) {
 		wxPuts(wxT("Wrong number!")); // Вывести сообщение
 	}
 
-#ifdef __WXMSW__ // Определение для Windows
+#ifdef _WIN32 // Если это Windows
 	_setmode(_fileno(stdout), _O_U16TEXT); // Установить Юникод для вывода в консоли Windows
 	_setmode(_fileno(stdin), _O_U16TEXT); // Установить Юникод для ввода в консоли Windows
 	_setmode(_fileno(stderr), _O_U16TEXT); // Установить Юникод для вывода ошибок в консоли Windows
@@ -77,45 +78,16 @@ int main(int argc, char** argv) {
 }
 ```
 
-## Настройки DialogBlocks:
-
-**WXWIN:** D:\Development\CPP\wxWidgetsDBls
-
-**DBPROJECTS:** D:\Projects\DialogBlocksProjects
-
-**MSBUILDDIR:** C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin
-
-**MSVCDIR:** C:\Program Files\Microsoft Visual Studio\2022\Community
-
-**PLATFORMSDK:** C:\Program Files (x86)\Windows Kits\10
-
-**VC++ version:** 17 <<-- Microsoft Visual Studio Community 2022 (64-разрядная версия) - Версия 17.8.2
-
-**VC++ tools version:** 14.38.33130 <<-- C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130
-
-**Full Platform SDK version**: 10.0.22621.0 <<-- C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0
-
-**Message encoding:** cp866
-
-*Чтобы компилировался проект без BOM в UTF-8 в конфигурации сборки укажите:*
-
-**Extra compile flags:** %AUTO% /utf-8
-
-*Чтобы компилировался проект в режиме консоли в конфигурации каждой сборки также укажите:*
-
-**GUI mode:** Console
-
 ## Ссылки:
 
-http://www.anthemion.co.uk/dialogblocks/DialogBlocks-5.18-beta3-Setup.exe
-
 http://www.anthemion.co.uk/dialogblocks/
+
+https://github.com/proffix4/dialogblocks_free
 
 https://www.wxwidgets.org/
 
 https://visualstudio.microsoft.com/ru/vs/community/
 
-http://www.anthemion.co.uk/dialogblocks/ImageBlocks-1.06-Setup.exe
+http://www.anthemion.co.uk/dialogblocks/ImageBlocks-1.07-Setup.exe
 
 https://poedit.net/
-

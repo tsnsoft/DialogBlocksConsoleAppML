@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
 	// Вывод списка языков
 	wxPuts(wxT("Choose language:")); // Вывести сообщение
-	for (int i = 0; i < languages.size(); ++i) { // Перебрать все языки
+	for (std::size_t i = 0; i < languages.size(); ++i) { // Перебрать все языки
 		// Вывести номер языка и название языка
 		wxPuts(std::to_wstring(i + 1) + L". " + wxString::FromUTF8(languages[i].c_str()));
 	}
@@ -25,8 +25,10 @@ int main(int argc, char** argv) {
 	wchar_t languageNumber; // Создать переменную для номера языка
 	wxPrintf(wxT("Enter language number: ")); // Вывести сообщение
 	std::wcin.get(languageNumber); // Считать номер языка
+
 	std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очистить буфер ввода
 	std::wcin.clear(); // Очистить флаги ошибок ввода
+	std::wcin.sync();  // Синхронизировать поток
 
 	if (languageNumber == '1') { // Если выбран английский язык
 		m_locale.Init(wxLANGUAGE_ENGLISH); // Инициализировать локализацию
