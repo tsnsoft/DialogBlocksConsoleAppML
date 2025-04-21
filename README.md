@@ -63,10 +63,10 @@ int main(int argc, char** argv) {
 #endif
 
 	wxPuts(wxGetTranslation(L"Замечательно! Das ist großartig! Wonderful! 精彩的！ رائع!"));
-	wxPrintf(wxGetTranslation(L"Введите имя: "));
+	wxPrintf(_(L"Введите имя: "));
 	std::wstring fio; // Создать строковую переменную
 	std::getline(std::wcin, fio); // Считать строку
-	wxPuts(wxGetTranslation(L"Привет") + ", " + fio + "!"); // Вывести строку
+	wxPuts(_(L"Привет") + ", " + fio + "!"); // Вывести строку
 
 #ifdef __WXMSW__ // Определение для Windows
 	system("pause"); // Приостановить выполнение программы

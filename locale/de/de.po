@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-11-21 18:43+0600\n"
-"PO-Revision-Date: 2023-11-21 20:26+0600\n"
+"POT-Creation-Date: 2025-04-21 22:44+0500\n"
+"PO-Revision-Date: 2025-04-21 22:45+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -10,20 +10,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: wxGetTranslation\n"
+"X-Poedit-KeywordsList: wxGetTranslation;_\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: Source.cpp\n"
 
-#: Source.cpp:20
+#: Source.cpp:59
 msgid "Замечательно! Das ist großartig! Wonderful! 精彩的！ رائع!"
 msgstr "Das ist großartig!"
 
-#: Source.cpp:21
+#: Source.cpp:60
 msgid "Введите имя: "
 msgstr "Gib deinen Namen ein: "
 
-#: Source.cpp:24
+#: Source.cpp:63
 msgid "Привет"
 msgstr "Hallo"
